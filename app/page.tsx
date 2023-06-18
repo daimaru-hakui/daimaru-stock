@@ -1,18 +1,24 @@
-import AuthForm from './auth-form'
+import { Suspense } from 'react';
+import { ProductList } from './components/products-list';
+import { Spinner } from './components/spinner';
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from "next/headers";
+import type { Database } from "../database.types";
 
-export default function Home() {
+export default async function Home() {
+  const supabase = createServerComponentClient<Database>({ cookies });
+  const { data: { session } } = await supabase.auth.getSession();
+
   return (
-    <div>
+    <main>
+      {session ? "ログイン済み" : "未ログイン"}
       <div className="col-6">
-        <h1 className="header">Supabase Auth + Storage</h1>
-        <p className="">
-          Experience our Auth and Storage through a simple profile management example. Create a user
-          profile and upload an avatar image. Fast, simple, secure.
-        </p>
+        <h1 className="header">Hello World</h1>
+        <Suspense fallback={<Spinner />}>
+
+          <ProductList />
+        </Suspense>
       </div>
-      <div className="col-6 auth-widget">
-        <AuthForm />
-      </div>
-    </div>
-  )
+    </main>
+  );
 }
