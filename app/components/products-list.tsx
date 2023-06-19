@@ -4,7 +4,6 @@ import { ProductTable } from "./products/table";
 type Product = Database['public']['Tables']['products']['Row'];
 
 async function fetchProducts() {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
   const res = await fetch(`${process.env.url}/rest/v1/products?select=*`, {
     headers: new Headers({
       apikey: process.env.apikey as string

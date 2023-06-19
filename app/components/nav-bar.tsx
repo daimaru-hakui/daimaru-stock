@@ -22,6 +22,14 @@ export const Navbar = ({ session }: { session: Session | null; }) => {
       link: "/products/new",
       title: "商品登録"
     },
+    {
+      link: "/settings/categories",
+      title: "カテゴリー一覧"
+    },
+    {
+      link: "/settings/colors",
+      title: "カラー一覧"
+    },
   ];
 
   const handleSignOut = async () => {
@@ -36,8 +44,8 @@ export const Navbar = ({ session }: { session: Session | null; }) => {
           <>
             {
               navList.map(({ link, title }) => (
-                <Link key={title} href={link} className='rounded bg-gray-700 px-3 py-2 text-white hover:bg-gray-500'>
-                  {title}
+                <Link key={title} href={link} >
+                  <Button className='rounded bg-gray-700 px-3 py-2 text-white hover:bg-gray-500'>{title}</Button>
                 </Link>
               ))}
             <Button className="rounded bg-gray-700 px-3 py-2 text-white hover:bg-gray-500" onClick={handleSignOut}>ログアウト</Button>
@@ -45,8 +53,8 @@ export const Navbar = ({ session }: { session: Session | null; }) => {
 
         ) : (
           <>
-            <Link className='rounded bg-gray-700 px-3 py-2 text-white hover:bg-gray-500' href="/auth/login">ログイン</Link>
-            <Link className='rounded bg-gray-700 px-3 py-2 text-white hover:bg-gray-500' href="/auth/signup">サインアップ</Link>
+            <Link href="/auth/login"><Button className='rounded bg-gray-700 px-3 py-2 text-white hover:bg-gray-500'>ログイン</Button></Link>
+            <Link href="/auth/signup"><Button className='rounded bg-gray-700 px-3 py-2 text-white hover:bg-gray-500'>サインアップ</Button></Link>
           </>
         )}
       </nav>

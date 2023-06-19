@@ -9,7 +9,7 @@ type Product = Database['public']['Tables']['products']['Row'];
 export const ProductTable = ({ products }: { products: Product[]; }) => {
   return (
     <Providers>
-      <Table verticalSpacing="md" horizontalSpacing="md">
+      <table>
         <thead>
           <tr>
             <th className='bg-slate-100'>品番</th>
@@ -26,7 +26,7 @@ export const ProductTable = ({ products }: { products: Product[]; }) => {
             </tr>
           ))}
         </tbody>
-      </Table>
+      </table>
     </Providers>
   );
 };

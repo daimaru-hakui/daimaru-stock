@@ -5,6 +5,7 @@ import { cookies } from "next/headers";
 import SupabaseListener from './components/supabase-listener';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { Database } from '@/database.types';
+import { redirect } from 'next/navigation';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,9 +21,10 @@ export default async function RootLayout({
 }) {
   const supabase = createServerComponentClient<Database>({ cookies });
   const { data: { session } } = await supabase.auth.getSession();
+
   return (
     <html lang="ja">
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-gray-100` }>
         {/* <SupabaseListener /> */}
         <Navbar session={session} />
         {children}
