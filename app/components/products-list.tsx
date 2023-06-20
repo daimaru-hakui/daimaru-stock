@@ -1,5 +1,5 @@
 import type { Database } from "../../database.types";
-import { ProductTable } from "./products/table";
+import { ProductTable } from "./settings/products/products-table";
 
 type Product = Database['public']['Tables']['products']['Row'];
 

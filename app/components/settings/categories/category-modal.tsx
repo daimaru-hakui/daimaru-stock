@@ -13,7 +13,7 @@ export function CategoryModal({ category }: { category: Category }) {
   return (
     <>
       <Modal opened={opened} onClose={close} title="カテゴリー名を編集">
-        <CategoryForm category={category} btnText='更新' />
+        <CategoryForm category={category} btnText='更新' close={close} />
       </Modal>
 
       <Group position="center">

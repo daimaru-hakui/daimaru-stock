@@ -24,7 +24,7 @@ export default async function RootLayout({
 
   return (
     <html lang="ja">
-      <body className={`${inter.className} bg-gray-100` }>
+      <body className={`${inter.className} bg-neutral-100` }>
         {/* <SupabaseListener /> */}
         <Navbar session={session} />
         {children}

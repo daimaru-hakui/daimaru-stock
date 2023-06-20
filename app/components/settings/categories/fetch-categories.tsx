@@ -1,9 +1,8 @@
-import type { Database } from '../../../database.types';
+import type { Database } from '../../../../database.types';
 import { CategoryTable } from './category-table';
 type Category = Database['public']['Tables']['categories']['Row'];
 
 async function fetchCategories() {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
   const res = await fetch(`${process.env.url}/rest/v1/categories?select=*`, {
     headers: new Headers({
       apikey: process.env.apikey as string,

@@ -2,8 +2,8 @@
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import React, { FC } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { BtnPrimary } from '../button/btn-primary';
 import { Database } from '@/database.types';
+import { Button } from '../../button/button';
 
 type Category = Database['public']['Tables']['categories']['Row'];
 
@@ -13,10 +13,11 @@ type Inputs = {
 
 type Props = {
   category?: Category;
-  btnText: string;
+  btnText?: string;
+  close?: () => void;
 };
 
-export const CategoryForm: FC<Props> = ({ category, btnText }) => {
+export const CategoryForm: FC<Props> = ({ category, btnText, close }) => {
   const supabase = createClientComponentClient();
 
   const addCategory = async (name: string) => {
@@ -62,8 +63,19 @@ export const CategoryForm: FC<Props> = ({ category, btnText }) => {
           )}
         </div>
       </div>
-      <div className="mt-6">
-        <BtnPrimary type="submit">{btnText}</BtnPrimary>
+      <div className="mt-6 flex space-x-2">
+        <Button
+          onClick={close}
+          type="submit"
+          w="w-full"
+          color="text-black"
+          props="border border-black"
+        >
+          閉じる
+        </Button>
+        <Button type="submit" w="w-full" bg="bg-black">
+          {btnText}
+        </Button>
       </div>
     </form>
   );

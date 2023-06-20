@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import React from 'react';
 import { BtnSecondary } from '@/app/components/button/btn-secondary';
-import { CategoryForm } from '@/app/components/categories/category-form';
+import { CategoryForm } from '@/app/components/settings/categories/category-form';
 
 const CategoryNewPage = () => {
   return (
-    <div className="w-full p-6 flex justify-center">
+    <div className="w-full h-full p-6 flex justify-center">
     <div className="w-[500px] p-6 bg-white rounded-md shadow-md">
       <div className="flex justify-between">
         <h2>カテゴリー登録</h2>

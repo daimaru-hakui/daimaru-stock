@@ -16,9 +16,5 @@ export default async function LoginPage() {
     redirect('/');
   }
 
-  return (
-    <Suspense fallback={""}>
-      <Login />
-    </Suspense>
-  );
+  return <Login />;
 }

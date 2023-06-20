@@ -1,4 +1,4 @@
-import type { Database } from "../../../database.types";
+import type { Database } from "../../../../database.types";
 type Color = Database['public']['Tables']['colors']['Row'];
 
 async function fetchColors() {
